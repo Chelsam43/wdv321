@@ -81,14 +81,14 @@
             let phone = document. getElementById("phone").value.trim();
 
             if(!name|| !email|| !phone) {
-                alert('All information required!');S
+                alert('All information required!');
                 return;
             }
         
         let newRegistration = {name,email,phone, date: new Date().toLocaleDateString()};
         
         
-        let registrations = JSON.parse(localStorage.getItem("eventRegistrations")) || [];
+        let registrations = JSON.parse(localStorage.getItem("eventRegistrations"));
         if(!Array.isArray(registrations)){
             registrations = [];
 
@@ -122,12 +122,12 @@
         }
 
         function updateHitCounter() {
-            let hits = parseInt(localStorage.getItem("pageHits")) || 0;
-            hits++
-            localStorage.setItem("pageHits", hits);
+            let hits = parseInt(localStorage.getItem("pageHits")) || 0; //gets exsisting or sets default to 0
+            hits++;
+            localStorage.setItem("pageHits", hits);//save local
             let activityCounter = document.getElementById("activityCounter");
             if (activityCounter){
-                activityCounter.innerText = hits;
+                activityCounter.innerText = hits;//shows new counter
             }
           
         }
